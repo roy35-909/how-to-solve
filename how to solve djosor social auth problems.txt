@@ -1,0 +1,22 @@
+Solve Google Authentication Error in Djosor, Social-Core library with cross site:
+
+step -1: 
+	Make State Paramiter False on social-core > oauth.py > BaseOauth2 (Line 331)
+	make redirectstate false
+	also state false
+
+step-2 :
+	added this into settings:
+
+	SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+	SESSION_COOKIE_NAME = 'sessionid'  # Default cookie name
+	SESSION_COOKIE_SECURE = True  # Set to True if using HTTPS
+	SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+	SESSION_COOKIE_SAMESITE = "NONE"
+step-3 :
+	Ensure That sessionid is added into cookies
+
+step-4 :
+	pass withCredintial : true for get and post request both.
+
+
